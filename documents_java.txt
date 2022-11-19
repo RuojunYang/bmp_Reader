@@ -1,0 +1,78 @@
+// all sample screen shots are in screenShots folder
+Reference:
+https://my.oschina.net/tigerBin/blog/1083549
+    is where I get the ZIGZAG and UNZIGZAG function
+
+https://www.geeksforgeeks.org/convert-byte-array-to-file-using-java/#:~:text=To%20convert%20byte%5B%5D%20to,and%20write%20in%20a%20file.
+    is where I get to write byte array to file
+
+https://www.baeldung.com/java-matrix-multiplication
+    is where I get the matrix multiplication
+
+// https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio
+    is some PSNR knowledge for image
+    
+a: This question is using Java and tested on Windows.
+
+b: Open as Intellij project or run the Q2.jar file with command:
+	java -jar Q2.jar
+
+c: 8 main classes
+    1. FileReader
+        - open select file dialog and read that file into hex form
+    2. BMPProcessor
+        - Read header
+        - Read data
+            get data from 50 byte to end
+        - Process data into decimal
+            from hex to binary, from binary to get 2's value
+    3. Graph
+        - Create frame
+        - Draw Box for the image (box size is as same as original image)
+        - Draw image in box
+    4. Lossy
+        - get data
+        - DCT transform data
+        - Quantization
+        - Runlength coding
+        - Creat Huffman for each YUV value
+        - encode Huffman into a byte array
+        - write byte array into file
+    5. Decoder
+        - get header
+        - get data
+        - get trees, data and keys based on header and header
+        - inverse DCT
+    6. HuffmanTree
+        - calculate output length
+        - get output
+    7. Tree
+        - build tree
+        - calculate
+        - get all data in list
+        - encode tree string
+        - find data in tree
+    8. Node
+        - store data in node
+
+d.  In main class
+    main() -> FileReader() -> BMPProcessor(file) -> Lossy(BMPProcessor) -> Graph(Lossy)
+
+    In FileReader
+    FileReader() -> new JFileChooser() -> Files.readAllBytes(path) -> Integer.toHexString(piece of data)
+
+    In BMPProcessor
+    BMPProcessor(file) -> Arrays.copyOfRange(data, start, end) -> stringToInt(String) -> LERead(String[])
+
+    In Lossy
+    compress() -> HuffmanTree() -> writeTo()
+
+    In HuffmanTree
+    oneWordHuffman() -> oneWordHuffman() -> buildTree() -> Tree.encodeLength() // encode output
+
+    In Decoder
+    decode()
+
+    In Graph
+    Paint()
+
